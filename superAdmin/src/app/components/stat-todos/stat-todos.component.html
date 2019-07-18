@@ -1,0 +1,69 @@
+<div class="card-group mb-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="h1 text-muted text-right mb-4">
+                <i class="icon-people"></i>
+            </div>
+            <div class="h4 mb-0">{{nbtodos}}</div>
+            <small class="text-muted text-uppercase font-weight-bold">Number of Todos</small>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="h1 text-muted text-right mb-4">
+                <i class="icon-user-follow"></i>
+            </div>
+            <div class="h4 mb-0">{{nbtodostoday}}</div>
+            <small class="text-muted text-uppercase font-weight-bold">Today Todos</small>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="h1 text-muted text-right mb-4">
+                <i class="icon-basket-loaded"></i>
+            </div>
+            <div class="h4 mb-0">{{nbtodosmonthly}}</div>
+            <small class="text-muted text-uppercase font-weight-bold">This Month Todos</small>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                Dones Logs
+            </div>
+            <div class="card-body">
+                <tabset>
+                    <tab *ngFor="let i of logs" heading="{{i.nom}} {{i.prenom}}">
+                        <p *ngIf="i.dateConnexion!=null"> {{i}} {{i.prenom}} has last connected at
+                            {{i.dateConnexion}}</p>
+                        <p *ngIf="i.dateDeconnexion!=null">{{i.nom}} {{i.prenom}} has last deconnected at
+                            {{i.dateDeconexion}}</p>
+                        <p *ngIf="i.dateDeconnexion==null && i.dateConnexion==null">No data</p>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                Todos Logs
+            </div>
+            <div class="card-body">
+                <tabset>
+                    <tab *ngFor="let i of logs" heading="{{i.nom}} {{i.prenom}}">
+                        <p *ngIf="i.dateConnexion!=null"> {{i.nom}} {{i.prenom}} has last connected at
+                            {{i.dateConnexion}}</p>
+                        <p *ngIf="i.dateDeconnexion!=null">{{i.nom}} {{i.prenom}} has last deconnected at
+                            {{i.dateDeconexion}}</p>
+                        <p *ngIf="i.dateDeconnexion==null && i.dateConnexion==null">No data</p>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+</div>

@@ -1,0 +1,70 @@
+<div class="card-group mb-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="h1 text-muted text-right mb-4">
+        <i class="icon-people"></i>
+      </div>
+      <div class="h4 mb-0">{{nbUsers}}</div>
+      <small class="text-muted text-uppercase font-weight-bold">Users</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="h1 text-muted text-right mb-4">
+        <i class="icon-user-follow"></i>
+      </div>
+      <div class="h4 mb-0">{{coUsers}}</div>
+      <small class="text-muted text-uppercase font-weight-bold">Connected Users</small>
+
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="h1 text-muted text-right mb-4">
+        <i class="icon-basket-loaded"></i>
+      </div>
+      <div class="h4 mb-0">{{nbAdmins}}</div>
+      <small class="text-muted text-uppercase font-weight-bold">Admins</small>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        Poucentage of all users and admins
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart" [data]="pieChartData" [labels]="pieChartLabels"
+            [chartType]="pieChartType"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header">
+        Users Activity Logs
+      </div>
+      <div class="card-body">
+        <tabset>
+          <tab *ngFor="let i of logs" heading="{{i.nom}} {{i.prenom}}">
+            <div *ngIf="i.dateConnexion!=null" role="alert" class="alert alert-success"
+              ng-reflect-klass="alert alert-success">
+              {{i.nom}} {{i.prenom}} has last connected at {{i.dateConnexion}}
+            </div>
+            <div *ngIf="i.dateDeconexion!=null" role="alert" class="alert alert-danger">
+              {{i.nom}} {{i.prenom}} has last deconnected at {{i.dateDeconexion}}
+            </div>
+            <div *ngIf="i.dateDeconnexion==null && i.dateConnexion==null" role="alert" class="alert alert-warning">
+              No data
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>

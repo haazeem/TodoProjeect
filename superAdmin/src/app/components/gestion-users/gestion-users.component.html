@@ -1,0 +1,117 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Liste Users
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Role</th>
+                <th>Acount status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let i of data">
+              <tr>
+                <td>{{i.data.nom}}</td>
+                <td>{{i.data.prenom}}</td>
+                <td>{{i.data.role}}</td>
+                <td>
+                  <span *ngIf="i.etat==true" class="badge badge-success">Active</span>
+                  <span *ngIf="i.etat==false" class="badge badge-danger">Not Active</span>
+                </td>
+                <td><button *ngIf="i.etat==false" (click)="activate(i)" class="btn btn-success btn-circle mx-2">
+                    <i class="cui-circle-check"></i>
+                  </button>
+                  <button *ngIf="i.etat==true" (click)="desactivate(i)" class="btn btn-danger btn-circle">
+                    <i class="cui-circle-x "></i>
+
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Users Status
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Status</th>
+
+              </tr>
+            </thead>
+            <tbody *ngFor="let i of data">
+              <tr>
+                <td>{{i.data.nom}}</td>
+                <td>{{i.data.prenom}}</td>
+                <td>
+                  <p *ngIf="i.data.status==true" style="color: green">Online</p>
+                  <p *ngIf="i.data.status==false" style="color :red;">Offline</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Liste Admins
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Role</th>
+                <th>Acount status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let i of data">
+              <tr *ngIf="i.data.role==='admin'">
+                <td>{{i.data.nom}}</td>
+                <td>{{i.data.prenom}}</td>
+                <td>{{i.data.role}}</td>
+                <td>
+                  <span *ngIf="i.etat==true" class="badge badge-success">Active</span>
+                  <span *ngIf="i.etat==false" class="badge badge-danger">Not Active</span>
+                </td>
+                <td><button *ngIf="i.etat==false" (click)="activate(i)" class="btn btn-success btn-circle mx-2">
+                    <i class="cui-circle-check"></i>
+                  </button>
+                  <button *ngIf="i.etat==true" (click)="desactivate(i)" class="btn btn-danger btn-circle">
+                    <i class="cui-circle-x "></i>
+
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
