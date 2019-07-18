@@ -8,10 +8,10 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class UserService {
   private _userInscription = "http://localhost:3000/user/inscription";
   private _userConnexion = "http://localhost:3000/user/connexion";
-  private _activate = "http://localhost:3000/user/activate"
-  private _desactivate = "http://localhost:3000/user/desactivate";
+  private _activate = "http://localhost:3000/admin/activate"
+  private _desactivate = "http://localhost:3000/admin/desactivate";
   private _setdeConnected = "http://localhost:3000/user/deconnexion"
-  private _infoDashbord = "http://localhost:3000/user/information";
+  private _infoDashbord = "http://localhost:3000/admin/information";
   constructor(private http: HttpClient) { }
 
   userInscription(user: User) {

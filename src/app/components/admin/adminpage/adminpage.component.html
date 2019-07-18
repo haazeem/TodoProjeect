@@ -227,7 +227,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            
+
           </div>
 
           <!-- Content Row -->
@@ -309,7 +309,7 @@
                   <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    
+
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -332,21 +332,17 @@
                                 <td>{{i.data.nom}}</td>
                                 <td>{{i.data.prenom}}</td>
                                 <td>
-                                  <div *ngIf="i.etat==true" class="card bg-success text-white shadow">
-                                    <div class="card-body">
-                                      Activated
-                                    </div>
+                                  <div *ngIf="i.etat==true" class="badge badge-success text-white shadow">
+                                    <h6>Activated</h6>
                                   </div>
-                                  <div *ngIf="i.etat==false" class="card bg-danger text-white shadow">
-                                    <div class="card-body">
-                                      Desactivated
-                                    </div>
+                                  <div *ngIf="i.etat==false" class="badge badge-danger text-white shadow">
+                                    <h6> Desactivated </h6>
                                   </div>
                                 </td>
-                                <td><button (click)="activate(i)" class="btn btn-success btn-circle mx-2">
+                                <td><button *ngIf="i.etat==false" (click)="activate(i)" class="btn btn-success btn-circle mx-2">
                                     <i class="fas fa-check"></i>
                                   </button>
-                                  <button (click)="desactivate(i)" class="btn btn-danger btn-circle">
+                                  <button   *ngIf="i.etat==true" (click)="desactivate(i)" class="btn btn-danger btn-circle">
                                     <i class="fas fa-times"></i>
                                   </button>
                                 </td>

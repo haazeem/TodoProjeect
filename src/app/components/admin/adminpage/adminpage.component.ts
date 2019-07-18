@@ -18,7 +18,6 @@ export class AdminpageComponent implements OnInit {
   nbUsers: Number;
   nbAdmins: Number;
   async ngOnInit() {
-
     localStorage.getItem('token');
     await this._user.infoDash().subscribe((res) => {
       this.coUsers = res['OnlineUsers'];
@@ -30,7 +29,6 @@ export class AdminpageComponent implements OnInit {
         for (let j in d[i]) {
           this.status.push(da[j]);
           if (da[j].role === "user") {
-
             this.data.push({ data: da[j], etat: da[j].isActivated });
           }
         }
