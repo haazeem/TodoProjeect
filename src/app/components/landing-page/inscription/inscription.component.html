@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <form [formGroup]="subscribeForm" (ngSubmit)="Inscription()">
+        <div class="row">
+            <div class="col">
+                <input type="text" name="nom" formControlName="nom" class="form-control" placeholder="Nom ">
+            </div>
+            <div *ngIf="nom.touched && nom.invalid" class="alert alert-danger ">
+                <div *ngIf="nom.errors.required">
+                    Le champ Nom est obligatoire !
+                </div>
+                <div *ngIf="nom.errors.pattern">
+                    Le champ Nom est invalide !
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="prenom" formControlName="prenom" class="form-control" placeholder="Prénom">
+                <div *ngIf="prenom.touched && prenom.invalid" class="alert alert-danger">
+                    <div *ngIf="prenom.errors.required">
+                        Le champ Prenom est obligatoire !
+                    </div>
+                    <div *ngIf="prenom.errors.pattern">
+                        Le champ Prenom est invalide !
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <input type="email" name="email" formControlName="email" class="form-control" placeholder="Email">
+                <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Le champ Email est obligatoire !
+                    </div>
+                    <div *ngIf="email.errors.email || email.errors.pattern">
+                        Le champ Email est incorrect !
+                    </div>
+                    <div *ngIf="email.errors.minLength">
+                        Minimum 8 caractéres !
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="telephone" formControlName="telephone" class="form-control"
+                    placeholder="Numéro Télépone">
+                <div *ngIf="telephone.touched && telephone.invalid" class="alert alert-danger">
+                    <div *ngIf="telephone.errors.required">
+                        Le champ Telephone est obligatoire !
+                    </div>
+                    <div *ngIf="telephone.errors.minlength ">
+                        Min 8
+                    </div>
+                    <div *ngIf="telephone.errors.pattern">
+                        Erreur
+                    </div>
+                    <div *ngIf="telephone.errors.maxlength ">
+                        Max 13
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <input type="password" name="motDePasse" formControlName="motDePasse" class="form-control"
+                    placeholder="Saisie Password ">
+                <div *ngIf="motDePasse.touched && motDePasse.invalid" class="alert alert-danger">
+                    <div *ngIf="motDePasse.errors.required">
+                        Le champ mot de passe est obligatoire !
+                    </div>
+                    <div *ngIf="motDePasse.errors.minlength">
+                        Minimum 8 !
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <input type="password" name="repMotDePasse" formControlName="repMotDePasse" class="form-control"
+                    placeholder="Répetez Password">
+                <div *ngIf="repMotDePasse.touched && repMotDePasse.invalid" class="alert alert-danger">
+                    <div *ngIf="repMotDePasse.errors.required">
+                        Le champ mot de passe est obligatoire !
+                    </div>
+                </div>
+                <div *ngIf="motDePasse.value!=repMotDePasse.value && repMotDePasse.valid " class="alert alert-danger">
+                    Le mot de passe doit étre identique !
+                </div>
+
+            </div>
+        </div><br>
+        <input type="submit" class="btn btn-outline-success" value="S'inscrire" [disabled]="subscribeForm.invalid">
+    </form>
+</div>
+<app-footer></app-footer>

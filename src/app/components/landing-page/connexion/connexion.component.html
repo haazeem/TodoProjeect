@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <form [formGroup]="ConnexionForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input name="email" formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp" placeholder="Enter email">
+      <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Le champ Email est obligatoire !
+        </div>
+        <div *ngIf="email.errors.email">
+          Le champ Email est Incorrect !
+        </div>
+      </div>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" name="motDePasse" formControlName="motDePasse" class="form-control"
+        id="exampleInputPassword1" placeholder="Password">
+      <div *ngIf="motDePasse.touched && motDePasse.invalid" class="alert alert-danger">
+        <div *ngIf="motDePasse.errors.required">
+          Le champ Mot De Passe est obligatoire !
+        </div>
+      </div>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <input type="submit" class="btn btn-primary" (click)="connect()" value="Submit" [disabled]="ConnexionForm.invalid">
+  </form>
+
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-light  bg-light">
+  <a class="navbar-brand" [routerLink]="['/home']"><img [src]="Url" width="100" /></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <div *ngIf="isHome==false ;then no else yes">
+      </div>
+      <ng-template #yes>
+        <button class="btn btn-success my-2 my-sm-0 mx-3" type="submit" [routerLink]="['/connexion']">Connexion</button>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit" [routerLink]="['/inscription']">Inscription</button>
+      </ng-template>
+      <ng-template #no>
+        <div *ngIf="isConnected==true ;then in else not">
+        </div>
+        <ng-template #in>
+          <button class="btn btn-danger my-2 my-sm-0 mx-3" type="submit"
+            (click)="deconnect()">Deconnexion</button>
+        </ng-template>
+        <ng-template #not>
+          <div *ngIf="isInscrip==true ;then noinscri else inscri">
+          </div>
+          <ng-template #inscri>
+            <button class="btn btn-primary my-2 my-sm-0" type="submit"
+              [routerLink]="['/inscription']">Inscription</button>
+          </ng-template>
+          <ng-template #noinscri>
+           <button class="btn btn-success my-2 my-sm-0 mx-3" type="submit"
+                [routerLink]="['/connexion']">Connexion</button>
+          </ng-template>
+        </ng-template>
+      </ng-template>
+    </form>
+  </div>
+</nav>

@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <button class="btn btn-info my-5" [routerLink]="['/todo-ajout']">Ajouter Todo</button>
+    <h2>Todo</h2>
+    <div *ngIf="todos.length > 0 ;then todo else notodo">
+    </div>
+    <ng-template #notodo>
+        <div class="alert alert-warning">
+            No Todos
+        </div>
+    </ng-template>
+    <ng-template #todo>
+        <table class="table">
+            <thead>
+                <th>Numéro</th>
+                <th>Titre</th>
+                <th>Date d'ajout</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of todos ; let i=index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ todo.titre }}</td>
+                    <td>{{ todo.dateAjout | date}}</td>
+                    <td>
+                        <button class="btn btn-success" (click)="terminate(todo)">Terminer</button>
+                        <button class="btn btn-warning mx-3" (click)="Modifier(todo)">Modifier</button>
+                        <button class="btn btn-danger" (click)="delete(todo)">Supprimer</button>
+                    </td>
+                </tr>
+        </table>
+    </ng-template>
+
+
+    <hr>
+    <h2>Done</h2>
+    <div *ngIf="dones.length > 0 ;then donees else nodones">
+    </div>
+        <ng-template #nodones>
+            <div class="alert alert-warning">
+                No dones
+            </div>
+        </ng-template>
+    <ng-template #donees>
+    <table class="table">
+        <thead>
+            <th>Numéro</th>
+            <th>Titre</th>
+            <th>Date d'ajout</th>
+            <th>Date Fin</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let done of dones;let i=index">
+                <td>{{ i+1 }}</td>
+                <td>{{ done.titre }}</td>
+                <td>{{ done.dateAjout | date}}</td>
+                <td>{{ datefin[i]   }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteFromDones(todo)">Supprimer</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    </ng-template>
+    <hr>
+</div>
+<app-footer></app-footer>

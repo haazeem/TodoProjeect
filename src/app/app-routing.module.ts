@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ConnexionComponent } from './connexion/connexion.component';
-import { InscriptionComponent } from './inscription/inscription.component';
-import { TodoRifComponent } from './todo-rif/todo-rif.component';
-import { TodoAjoutComponent } from './todo-ajout/todo-ajout.component';
-import { TodoModifComponent } from './todo-modif/todo-modif.component';
+import { HomeComponent } from './components/landing-page/home/home.component';
+import { ConnexionComponent } from './components/landing-page/connexion/connexion.component';
+import { InscriptionComponent } from './components/landing-page/inscription/inscription.component';
+import { TodoRifComponent } from './components/user/todo-rif/todo-rif.component';
+import { TodoAjoutComponent } from './components/user/todo-ajout/todo-ajout.component';
+import { TodoModifComponent } from './components/user/todo-modif/todo-modif.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
+
+import { AdminpageComponent } from './components/admin/adminpage/adminpage.component';
+import { UserGuard } from './guards/user.guard';
+import { AdminGuard } from './guards/admin.guard';
+
 
 
 const routes: Routes = [
@@ -28,15 +34,23 @@ const routes: Routes = [
   },
   {
     path: 'todo-rif',
-    component: TodoRifComponent
+    component: TodoRifComponent,
+    canActivate : [UserGuard]
   },
   {
     path: 'todo-ajout',
-    component: TodoAjoutComponent
+    component: TodoAjoutComponent,
+    canActivate : [UserGuard]
   },
   {
     path: 'todo-modif',
-    component: TodoModifComponent
+    component: TodoModifComponent,
+    canActivate : [UserGuard]
+  },
+  {
+    path :'adminPage',
+    component :AdminpageComponent,
+    canActivate : [AdminGuard]
   }
 ];
 
